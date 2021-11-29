@@ -1,7 +1,13 @@
 package pictureFrame;
 import java.util.ArrayList;
+
 import java.util.Scanner;
 import java.io.File;
+/**
+ * Reads picture data from a file using the file name which is passed to it when the class is called.
+ * @author menam
+ *
+ */
 public class PictureDataReader {
  public static ArrayList<PictureData> readPictureDataFromFile(String fname){
 	 // reads the data of the picture from a file.

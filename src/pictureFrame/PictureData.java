@@ -1,4 +1,9 @@
 package pictureFrame;
+/**
+ * Object that holds the picture data.
+ * @author menam
+ *
+ */
 public class PictureData {
 	private String name, date, description;
 
