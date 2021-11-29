@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.io.File;
 public class PictureDataReader {
  public static ArrayList<PictureData> readPictureDataFromFile(String fname){
+	 // reads the data of the picture from a file.
 	 try {
 		 ArrayList<PictureData> PictureData = new ArrayList<PictureData>();
 		 Scanner fsc = new Scanner(new File(fname));
