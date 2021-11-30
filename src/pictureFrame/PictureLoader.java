@@ -1,5 +1,6 @@
 package pictureFrame;
 import java.util.ArrayList;
+
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -18,6 +19,7 @@ public static ArrayList<BufferedImage> loadImagesFromPictureData(ArrayList<Pictu
 		} catch (Exception ex) {
 			System.out.println("The image could not be read.");
 		}
+		
 	}
 
 	
