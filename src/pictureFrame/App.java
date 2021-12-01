@@ -1,6 +1,8 @@
 package pictureFrame;
 import java.util.ArrayList;
 
+import java.awt.image.BufferedImage;
+
 
 
 
@@ -15,7 +17,7 @@ public class App {
 		ArrayList<PictureData> pictureData = new ArrayList<PictureData>();
 		String fname = "descriptions.txt";
 		pictureData = PictureDataReader.readPictureDataFromFile(fname);
-		PictureLoader.loadImagesFromPictureData(pictureData);
+		ArrayList<BufferedImage> bfImages = PictureLoader.loadImagesFromPictureData(pictureData);
 		PictureFrame pf = new PictureFrame();
 		pf.setVisible(true);
 	}

@@ -1,7 +1,6 @@
 package pictureFrame;
 import javax.swing.JFrame;
-
-
+import java.awt.image.BufferedImage;
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -25,6 +24,7 @@ import javax.swing.JOptionPane;
 public class PictureFrame extends JFrame{
 	private JTextField  dateText;
 	private JTextArea descriptionText;
+	private BufferedImage picture;
 	public void setUpMainMenu(){
 		JMenuBar mbar = new JMenuBar();
 		JMenu mnuFile = new JMenu("File");
@@ -76,7 +76,7 @@ public class PictureFrame extends JFrame{
 		// the center panel uses borderlayout
 		// the north panel uses jtextfield for holding date
 		JPanel panSouth = new JPanel();
-		JPanel panCenter = new JPanel();
+		PicturePanel panCenter = new PicturePanel();
 		JPanel panNorth = new JPanel();
 		// north panel
 		panNorth.add(dateText);
@@ -89,7 +89,32 @@ public class PictureFrame extends JFrame{
 		panSouth.add(btnSave);
 		JButton btnNext = new JButton("Next");
 		panSouth.add(btnNext);
+		btnPrev.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e){
+						
+					}
+				}
+				);
+		btnSave.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e){
+						
+					}
+				}
+				);
+		btnNext.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e){
+						
+					}
+				}
+				);
+		
+		
 		c.add(panSouth,BorderLayout.SOUTH);
+		c.add(panCenter, BorderLayout.CENTER);
+		c.add(panNorth, BorderLayout.NORTH);
 	}
 	/**
 	 * call setUpGUI to create the picture frame
