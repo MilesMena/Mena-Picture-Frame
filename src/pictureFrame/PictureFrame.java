@@ -1,12 +1,15 @@
 package pictureFrame;
 import javax.swing.JFrame;
+
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
@@ -32,6 +35,14 @@ public class PictureFrame extends JFrame{
 		mbar.add(mnuFile);
 		mbar.add(mnuHelp);
 		JMenuItem miSave = new JMenuItem("Save");
+		miSave.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+					}
+				}
+				
+				);
 		JMenuItem miExit = new JMenuItem("Exit");
 		JMenuItem miAbout = new JMenuItem("About");
 		mnuHelp.add(miAbout);
@@ -68,18 +79,21 @@ public class PictureFrame extends JFrame{
 		setUpMainMenu();
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
-		dateText = new JTextField();
-		descriptionText = new JTextArea();
+		dateText = new JTextField("01/02/23");
+		descriptionText = new JTextArea("this is a test by the emergency broadcast system. If this were real...");
 		// tarStory = new JTextArea();
 		//c.add(BorderLayout.CENTER);
 		// the south panel has a btnPrev, btnSave,btnNext
 		// the center panel uses borderlayout
 		// the north panel uses jtextfield for holding date
+		PicturePanel panNorth = new PicturePanel();
+		JPanel panCenter = new JPanel();
 		JPanel panSouth = new JPanel();
-		PicturePanel panCenter = new PicturePanel();
-		JPanel panNorth = new JPanel();
-		// north panel
-		panNorth.add(dateText);
+		
+		
+
+		
+		panCenter.add(dateText);
 		panCenter.add(descriptionText);
 		// south panel
 		panSouth.setLayout(new FlowLayout());
@@ -111,10 +125,10 @@ public class PictureFrame extends JFrame{
 				}
 				);
 		
-		
+		c.add(panNorth, BorderLayout.NORTH);
 		c.add(panSouth,BorderLayout.SOUTH);
 		c.add(panCenter, BorderLayout.CENTER);
-		c.add(panNorth, BorderLayout.NORTH);
+		
 	}
 	/**
 	 * call setUpGUI to create the picture frame
