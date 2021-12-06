@@ -15,7 +15,7 @@ public class PictureDataWriter {
  		try {
 			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("descriptions.txt")));
 			for (PictureData picData: pd) {
-				pw.println(picData);
+				pw.println(picData);  // makes use of the to string functions that is within every Pictrue Data object
 			}
 			pw.close();
 		} catch (Exception ex) {

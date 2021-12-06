@@ -19,9 +19,9 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 	private ArrayList<BufferedImage> bfImage;
 	private ArrayList<PictureData> pd;
 	public PicturePanel(ArrayList<BufferedImage> bfImg, ArrayList<PictureData> pData){
-		msgX = 0;
-		msgY = 0;	
-		message = "(0,0)";
+		msgX = 10;
+		msgY = 10;	
+		message = "(x = 10, y = 10)";
 		setPreferredSize(new Dimension(200,200));
 		addMouseMotionListener(this);
 		addMouseListener(this);
@@ -37,14 +37,16 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawString(message, msgX, msgY);
+		
 		try {
 			
 			
 			g.drawImage(picture,0,0,null);
 			} catch (Exception ex) {
 			}
+		g.drawString(message, msgX, msgY);
 	}
+	
 	public void mouseClicked(MouseEvent e) {
         message = String.format("(%d, %d)", e.getX(),e.getY());
         msgX = e.getX();
@@ -52,11 +54,11 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
         repaint();  // calls paintComponent(g);
     }
     public void mousePressed(MouseEvent e) {
-        //message = String.format("Mouse pressed at (%d, %d)", e.getX(),e.getY());
-        //repaint();  // calls paintComponent(g);
+       // message = String.format("Mouse pressed at (%d, %d)", e.getX(),e.getY());
+       // repaint();  // calls paintComponent(g);
     }
     public void mouseReleased(MouseEvent e) {
-        //message = String.format("Mouse released at (%d, %d)", e.getX(),e.getY());
+       // message = String.format("Mouse released at (%d, %d)", e.getX(),e.getY());
         //repaint();  // calls paintComponent(g);
     }
     public void mouseEntered(MouseEvent e) {
@@ -64,16 +66,16 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
         //repaint();  // calls paintComponent(g);
     }
     public void mouseExited(MouseEvent e) {
-        //message = String.format("Mouse exited at (%d, %d)", e.getX(),e.getY());
-        //repaint();  // calls paintComponent(g);
+       // message = String.format("Mouse exited at (%d, %d)", e.getX(),e.getY());
+       // repaint();  // calls paintComponent(g);
     }
     public void mouseMoved(MouseEvent e) {
-        //message = String.format("Mouse moved at (%d, %d)", e.getX(),e.getY());
-        //repaint();  // calls paintComponent(g);
+       // message = String.format("Mouse moved at (%d, %d)", e.getX(),e.getY());
+      //  repaint();  // calls paintComponent(g);
     }
     public void mouseDragged(MouseEvent e) {
-        //message = String.format("Mouse dragged at (%d, %d)", e.getX(),e.getY());
-        //repaint();  // calls paintComponent(g);
+      //  message = String.format("Mouse dragged at (%d, %d)", e.getX(),e.getY());
+       // repaint();  // calls paintComponent(g);
     }
 
 	

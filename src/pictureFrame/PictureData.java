@@ -6,7 +6,7 @@ package pictureFrame;
  */
 public class PictureData {
 	private String name, date, description;
-
+	// basic getters and setters
 	public String getName() {
 		return name;
 	}
@@ -37,7 +37,7 @@ public class PictureData {
 	}
 	@Override
 	public String toString(){
-		return String.format(name + "\t" + date + "\t" + description);
+		return String.format(name + "\t" + date + "\t" + description);  // Important to keep this tab delimited
 		
 	}
 

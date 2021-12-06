@@ -14,6 +14,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Graphics;
 import javax.swing.JMenuBar;
@@ -25,18 +28,26 @@ import javax.swing.JOptionPane;
  * @author menam
  *
  */
-public class PictureFrame extends JFrame{
+public class PictureFrame extends JFrame {
 	private JTextField  dateText;
 	private JTextArea descriptionText;
-	private JTextArea dottedLine;
+	private JTextArea dottedLine;  // Line between, dateText,descriptionText.
 	private BufferedImage picture;
+	private String message;
+	private int msgY, msgX;
 	private int index;
-	
+/**
+ * keeps track of the index of the arrayList of PictureData
+ * @return
+ */
 	public int getIndex() {
 		return index;
 	}
-	
-	public void setUpMainMenu(){
+	/**
+	 * Set's up main menu, file contains help and save, and help contains save.
+	 * @param pd
+	 */
+	public void setUpMainMenu(ArrayList<PictureData> pd){
 		JMenuBar mbar = new JMenuBar();
 		JMenu mnuFile = new JMenu("File");
 		JMenu mnuHelp = new JMenu("Help");
@@ -46,14 +57,17 @@ public class PictureFrame extends JFrame{
 		miSave.addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
+						pd.get(Math.floorMod(index,4)).setDate(dateText.getText());   // gets the index that the panel is on, and sets the date from what was input
+						pd.get(Math.floorMod(index,4)).setDescription(descriptionText.getText());
+						PictureDataWriter.writeToFile(pd);
 					}
 				}
 				
 				);
 		JMenuItem miExit = new JMenuItem("Exit");
 		JMenuItem miAbout = new JMenuItem("About");
-		mnuHelp.add(miAbout);
+		// adding JMenu
+		mnuHelp.add(miAbout);  
 		mnuFile.add(miSave);
 		mnuFile.add(miExit);
 		miExit.addActionListener(
@@ -84,7 +98,7 @@ public class PictureFrame extends JFrame{
 		setTitle("Picture Frame");
 		setBounds(100,100,290,400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setUpMainMenu();
+		setUpMainMenu(pd);
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
 		dateText = new JTextField(pd.get(index).getDate());
@@ -95,7 +109,7 @@ public class PictureFrame extends JFrame{
 		// the south panel has a btnPrev, btnSave,btnNext
 		// the center panel uses borderlayout
 		// the north panel uses jtextfield for holding date
-		PicturePanel panNorth = new PicturePanel(bfImg, pd);
+		
 		JPanel panCenter = new JPanel();
 		JPanel panSouth = new JPanel();
 		
@@ -114,6 +128,8 @@ public class PictureFrame extends JFrame{
 		panSouth.add(btnSave);
 		JButton btnNext = new JButton("Next");
 		panSouth.add(btnNext);
+		
+		PicturePanel panNorth = new PicturePanel(bfImg, pd);
 		
 		btnPrev.addActionListener(
 				new ActionListener() {
@@ -204,7 +220,8 @@ public PictureFrame(ArrayList<BufferedImage> bfImages, ArrayList<PictureData> pd
 	index = 0;
 	setUpGUI(bfImages,pd);
 	
-	
+ 
 }
+
 
 }
