@@ -31,9 +31,7 @@ public class PictureFrame extends JFrame{
 	private JTextArea dottedLine;
 	private BufferedImage picture;
 	private int index;
-	public void setDateText(PictureData pd) {
 	
-	}
 	public int getIndex() {
 		return index;
 	}
@@ -156,6 +154,7 @@ public class PictureFrame extends JFrame{
 					public void actionPerformed(ActionEvent e){
 						pd.get(Math.floorMod(index,4)).setDate(dateText.getText());
 						pd.get(Math.floorMod(index,4)).setDescription(descriptionText.getText());
+						PictureDataWriter.writeToFile(pd);
 					}
 				}
 				);

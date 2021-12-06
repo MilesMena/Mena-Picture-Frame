@@ -37,7 +37,7 @@ public class PictureData {
 	}
 	@Override
 	public String toString(){
-		return String.format("%-20s%-20s%-20s", name, date, description);
+		return String.format(name + "\t" + date + "\t" + description);
 		
 	}
 
