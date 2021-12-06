@@ -1,9 +1,11 @@
 package pictureFrame;
 import java.awt.Dimension;
+
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
@@ -13,13 +15,19 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 	private BufferedImage picture;
 	private String message;
 	private int msgX, msgY;
-	public PicturePanel(){
+	private int index = 0;
+	private ArrayList<BufferedImage> bfImage;
+	private ArrayList<PictureData> pd;
+	public PicturePanel(ArrayList<BufferedImage> bfImg, ArrayList<PictureData> pData){
 		msgX = 0;
 		msgY = 0;	
 		message = "(0,0)";
 		setPreferredSize(new Dimension(200,200));
 		addMouseMotionListener(this);
 		addMouseListener(this);
+		bfImage = bfImg;
+		pd = pData;
+		picture = bfImg.get(0);
 		
 	}
 	public void setPicture(BufferedImage pic) {
@@ -31,8 +39,9 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 		super.paintComponent(g);
 		g.drawString(message, msgX, msgY);
 		try {
-			BufferedImage img = ImageIO.read(new File("pic1.png"));
-			g.drawImage(img,0,0,null);
+			
+			
+			g.drawImage(picture,0,0,null);
 			} catch (Exception ex) {
 			}
 	}

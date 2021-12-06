@@ -18,7 +18,7 @@ public class App {
 		String fname = "descriptions.txt";
 		pictureData = PictureDataReader.readPictureDataFromFile(fname);
 		ArrayList<BufferedImage> bfImages = PictureLoader.loadImagesFromPictureData(pictureData);
-		PictureFrame pf = new PictureFrame();
+		PictureFrame pf = new PictureFrame(bfImages,pictureData);
 		pf.setVisible(true);
 	}
 
